@@ -60,6 +60,36 @@ El flujo de datos será el siguiente:
 
 # Material proporcionado.
 Todo el material se obtiene del siguiente repositorio:
+```bash
+$ git clone https://github.com/franciscodelicado/MUBDyCN-Flink-2nd-Activity.git
+$ cd MUBDyCN-Flink-2nd-Activity
+```
+donde en:
+
+* `README.md` es este fichero que está leyendo.
+* `scripts/f1_car_mqtt.py` es el script de Python que emula un coche de F1.
+* `./service` es el script para levantar (`start`) o parar (`stop`) la arquitectura del sistema en Docker.
+* `installOrionFlinkConnector.sh` es el script que hay que ejecutar antes de compilar el proyecto de Flink para que instale la bibliteca `./orion.flink.connector-1.2.4.jar` necesaria para implementar el `source` de Orion en Flink. 
+
+    Simplemente, después de obtener el repositorio, hay que hacer:
+    ```bash
+    $ ./installOrionFlinkConnector.sh
+    ```
+* `pom.xml` el fichero de configuración del proyecto Maven utilizado para generar el programa de Apache Flink con sus dependencias.
+* `mvn8.sh` es un script para asegurarnos que utilizamos la versión 1.8 de Java para compilar el proyecto Flink. Quizás en tu sistema esto no sea necesario utilizarlo.
+* `launchjarinflink.sh` es un script para lanzar desde línea de comando el `*.jar` de Flink, devolviendo el ID del proceso para poder eliminarlo desde línea de comandos más tarde. Se ejecutará de la siguiente forma:
+    ```bash
+    $ ./launchjarinflink.sh target/2nd-Exercise-1.0-SNAPSHOT.jar example.org.DrsControllerJob
+    ```
+Y para cancelar el trabajo de Flink, hay que ejecutar usando el `<JOB_ID>` devuelto por el `launchjarinflink.sh` :
+
+    ```bash
+    $ docker exec -it flink-jobmanager flink cancel <JOB_ID>
+    ```
+* `src/` el directorio donde está el código del programa de Flink en Scala.
+
+
+
 
 # Tareas a realizar
 Se deberán realizar las siguientes acctiones:
