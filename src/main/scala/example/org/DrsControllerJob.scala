@@ -33,8 +33,6 @@ object DrsControllerJob {
 
     // TODO: Calcular la aceleración del coche a partir de las telemetrías obtenidas
 
-    // TODO: Guardar en Cassandra tanto las telemetrías obtenidas como la aceleración calculada
-
     /* TODO: Implementar el controlador de DRS:
     *     - Si velocidad > 200 km/h y el freno no está presionado => activar DRS
     *     - Si freno presionado o velocidad < 200 km/h => desactivar DRS
@@ -42,6 +40,10 @@ object DrsControllerJob {
     *   Nota: Para enviar comandos a Orion, se puede usar un Sink de tipo OrionSink. 
     *         El formato de los comandos dependerá de la definición de las entidades en Orion.
     */
+    
+    // TODO: Guardar en Cassandra tanto las telemetrías obtenidas como la aceleración calculada y el estado del DRS.
+
+    
 
     
     env.execute("DRS Controller Job")
